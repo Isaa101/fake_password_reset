@@ -3,33 +3,56 @@
 <head>
     <title>HKUST Alumni - Change Password</title>
     <style>
+        body { font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: 0 auto; }
+        .hidden { display: none; } /* Hide results initially */
         /* (Keep your existing CSS styles) */
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Change Account Password for Alumni</h1>
-        <form id="passwordForm" action="submitted.html" method="GET">
-            <!-- Your existing form fields (username, password, etc.) -->
+        
+        <!-- Form (submits via JavaScript) -->
+        <form id="passwordForm">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
-            <!-- Add other fields (old/new password, etc.) -->
+            
+            <div class="form-group">
+                <label for="password">New Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
             <div class="buttons">
                 <button type="submit" class="submit">Submit</button>
             </div>
         </form>
+        
+        <!-- Results (shown after submission) -->
+        <div id="results" class="hidden">
+            <h2>Simulated Submission (Educational Demo)</h2>
+            <pre id="displayData"></pre>
+            <p><em>No data was stored. This is a security demonstration.</em></p>
+        </div>
     </div>
 
     <script>
-        // (Optional) Log data to console (for testing)
         document.getElementById("passwordForm").addEventListener("submit", function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Stop form submission
+            
+            // Capture form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
-            console.log("Submitted Data:", data); // View in browser's dev tools (F12)
-            window.location.href = "submitted.html?" + new URLSearchParams(data).toString();
+            
+            // Display results on the same page
+            document.getElementById("displayData").textContent = 
+                `Username: ${data.username}\nPassword: ${data.password}`;
+            
+            // Hide form, show results
+            document.getElementById("passwordForm").classList.add("hidden");
+            document.getElementById("results").classList.remove("hidden");
         });
     </script>
 </body>
