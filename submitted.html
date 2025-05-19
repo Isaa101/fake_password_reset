@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submission Received</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        pre { background: #f0f0f0; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Mock Data Captured (Educational Demo)</h1>
+    <pre id="displayData"></pre>
+    <p>This is a simulation for cybersecurity education. No data was actually stored.</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("displayData").textContent = 
+            Array.from(params.entries()).map(([key, val]) => `${key}: ${val}`).join('\n');
+    </script>
+</body>
+</html>
