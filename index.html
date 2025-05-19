@@ -1,6 +1,6 @@
-@@ -0,0 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,6 +91,7 @@
         .password-rules li {
             margin-bottom: 5px;
         }
+        /* (Keep your existing CSS styles) */
     </style>
 </head>
 <body>
@@ -109,6 +110,11 @@
                 <label for="connect" style="display: inline;">connect.ust.hk</label><br>
                 <input type="radio" id="alumni" name="domain" value="alumni.ust.hk">
                 <label for="alumni" style="display: inline;">alumni.ust.hk</label>
+        <form id="passwordForm" action="submitted.html" method="GET">
+            <!-- Your existing form fields (username, password, etc.) -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
             </div>
         </div>
         
@@ -146,6 +152,22 @@
                 <li>Not reuse any of your last 10 passwords</li>
             </ul>
         </div>
+            <!-- Add other fields (old/new password, etc.) -->
+            <div class="buttons">
+                <button type="submit" class="submit">Submit</button>
+            </div>
+        </form>
     </div>
+
+    <script>
+        // (Optional) Log data to console (for testing)
+        document.getElementById("passwordForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            console.log("Submitted Data:", data); // View in browser's dev tools (F12)
+            window.location.href = "submitted.html?" + new URLSearchParams(data).toString();
+        });
+    </script>
 </body>
 </html>
